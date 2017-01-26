@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   vector.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/24 13:38:45 by nhuber            #+#    #+#             */
-/*   Updated: 2016/06/29 14:27:02 by nhuber           ###   ########.fr       */
+/*   Created: 2016/06/30 18:41:16 by nhuber            #+#    #+#             */
+/*   Updated: 2016/07/01 18:05:21 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "vector.h"
 
-int	ft_isdigit(int c)
+t_vector	*vector_construct(int init_capacity)
 {
-	if (c <= '9' && c >= '0')
-		return (1);
-	return (0);
+	t_vector	*v;
+	int			c;
+
+	c = init_capacity ? init_capacity : VECTOR_CAPACITY_INIT;
+	if (!(v = (t_vector *)malloc(sizeof(t_vector))))
+		return (NULL);
+	if (!(v->items = (void **)malloc(sizeof(void *) * c)))
+		return (NULL);
+	v->capacity = c;
+	v->size = 0;
+	return (v);
 }

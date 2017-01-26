@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   vector_add.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/24 13:38:45 by nhuber            #+#    #+#             */
-/*   Updated: 2016/06/29 14:27:02 by nhuber           ###   ########.fr       */
+/*   Created: 2016/07/01 14:35:21 by nhuber            #+#    #+#             */
+/*   Updated: 2016/07/01 15:26:41 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "vector.h"
 
-int	ft_isdigit(int c)
+void	vector_add(t_vector *v, void *item)
 {
-	if (c <= '9' && c >= '0')
-		return (1);
-	return (0);
+	vector_resize(v);
+	v->items[v->size++] = item;
 }

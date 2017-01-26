@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/24 13:38:45 by nhuber            #+#    #+#             */
-/*   Updated: 2016/06/29 14:27:02 by nhuber           ###   ########.fr       */
+/*   Created: 2017/01/16 16:40:17 by nhuber            #+#    #+#             */
+/*   Updated: 2017/01/26 11:26:50 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "lem_in.h"
+#include <stdio.h>
 
-int	ft_isdigit(int c)
+int	main(int ac, char **av)
 {
-	if (c <= '9' && c >= '0')
-		return (1);
+	t_vector	*v;
+
+	v = vector_construct(0);
+	
+	printf("%d - %s\n", ac, av[1]);	
+
+
 	return (0);
 }

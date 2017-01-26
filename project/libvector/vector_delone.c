@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   vector_delone.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/24 13:38:45 by nhuber            #+#    #+#             */
-/*   Updated: 2016/06/29 14:27:02 by nhuber           ###   ########.fr       */
+/*   Created: 2016/07/01 14:49:24 by nhuber            #+#    #+#             */
+/*   Updated: 2016/07/01 17:52:18 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "vector.h"
 
-int	ft_isdigit(int c)
+void	vector_delone(t_vector *v, int index, void (*del)(void *))
 {
-	if (c <= '9' && c >= '0')
-		return (1);
-	return (0);
+	if (index < 0 || index > v->size)
+		return ;
+	del(v->items[index]);
+	while (index < v->size - 1)
+	{
+		v->items[index] = v->items[index + 1];
+		index++;
+	}
+	v->items[v->size--] = NULL;
 }

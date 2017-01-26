@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   vector_destruct.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/24 13:38:45 by nhuber            #+#    #+#             */
-/*   Updated: 2016/06/29 14:27:02 by nhuber           ###   ########.fr       */
+/*   Created: 2016/07/01 15:08:07 by nhuber            #+#    #+#             */
+/*   Updated: 2016/07/01 18:03:50 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "vector.h"
 
-int	ft_isdigit(int c)
+void	vector_destruct(t_vector *v, void (*del)(void *))
 {
-	if (c <= '9' && c >= '0')
-		return (1);
-	return (0);
+	int	i;
+
+	i = v->size;
+	if (!v)
+		return ;
+	while (i >= 0)
+	{
+		del(v->items[i]);
+		i--;
+	}
+	if (v->items)
+		free(v->items);
+	free(v);
 }

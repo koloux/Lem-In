@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   vector_resize.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/24 13:38:45 by nhuber            #+#    #+#             */
-/*   Updated: 2016/06/29 14:27:02 by nhuber           ###   ########.fr       */
+/*   Created: 2016/07/01 15:18:11 by nhuber            #+#    #+#             */
+/*   Updated: 2016/07/01 15:24:32 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "vector.h"
 
-int	ft_isdigit(int c)
+void	vector_resize(t_vector *this)
 {
-	if (c <= '9' && c >= '0')
-		return (1);
-	return (0);
+	void	**elem;
+
+	if (this->size >= this->capacity)
+	{
+		if ((elem = (void **)malloc(sizeof(void *) *
+						this->capacity * 2)) != NULL)
+		{
+			items_cpy(elem, this->items, (this->capacity * sizeof(void *)));
+			free(this->items);
+			this->capacity *= 2;
+			this->items = elem;
+		}
+	}
 }
