@@ -6,7 +6,7 @@
 #*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2016/03/07 09:32:29 by nhuber            #+#    #+#             *#
-#*   Updated: 2016/04/07 17:41:23 by nhuber           ###   ########.fr       *#
+#*   Updated: 2017/02/16 14:13:58 by nhuber           ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -17,7 +17,12 @@ H_DIR = header
 F_DIR = srcs
 L_DIR = libft
 V_DIR = libvector
-FILES = $(F_DIR)/main.c
+FILES = $(F_DIR)/main.c \
+		$(F_DIR)/print.c \
+		$(F_DIR)/utility.c \
+		$(F_DIR)/get_next_line.c \
+		$(F_DIR)/error.c \
+		$(F_DIR)/params.c
 TMP = Makefile~ $(NAME)~ $(FILES:.c=.c~)
 OBJ = $(FILES:.c=.o)
 

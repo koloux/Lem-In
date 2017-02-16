@@ -1,4 +1,4 @@
-# push_swap
+# lem-in
 42 School project - [lem-in](./subject/lem-in.pdf)<br />
 
 #Auteur

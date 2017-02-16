@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/16 16:40:17 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/16 14:31:42 by nhuber           ###   ########.fr       */
+/*   Created: 2017/02/15 09:53:03 by nhuber            #+#    #+#             */
+/*   Updated: 2017/02/16 13:33:31 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-#include <stdio.h>
 
-int	main(int ac, char **av)
+void	print_usage(int error)
 {
-	t_vector	*anthill;
-
-	if (ac != 2)
-		print_usage(2);
-	else
-	{
-		anthill = vector_construct(0);
-		params(av);
-	}
-	return (0);
+	ft_putendl("ERROR\n\tUsage : ./lem_in map");
+	if (error == 1)
+		ft_putendl("\tInvalid File");
+	if (error == 2)
+		ft_putendl("\tWrong number of arguments");
 }
