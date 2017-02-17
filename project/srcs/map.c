@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 12:17:41 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/17 18:25:03 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/02/17 18:48:26 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,19 @@ void	map_text(t_vector *anthill, char *line)
 		tmp2 = ft_strjoin(tmp, str);
 		free(tmp);
 		anthill->items[0] = tmp2;
+	}
+}
+
+void	map_startend(t_vector *anthill)
+{
+	int	i;
+	int	se;
+
+	i = 1;
+	se = 0;
+	while (i <= anthill->size && se < 2)
+	{
+
+		i++;
 	}
 }

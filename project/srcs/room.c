@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 11:56:14 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/17 12:06:15 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/02/17 18:53:09 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,10 @@ t_node	*room_construct(char *name)
 		room->weight = -1;
 	}
 	return (room);
+}
+
+void	room_destruct(t_node *room)
+{
+	free(room->name);
+	free(room);
 }

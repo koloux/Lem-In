@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 16:40:17 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/17 18:24:27 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/02/17 19:37:12 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	main(int ac, char **av)
 {
 	t_vector	*anthill;
 
+	(void)av;
 	if (ac != 2)
 		print_usage(2);
 	else

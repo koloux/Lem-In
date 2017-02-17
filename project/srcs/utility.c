@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/16 13:40:21 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/17 18:25:49 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/02/17 19:38:17 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,19 @@ int	is_antnb(char *line)
 
 int	is_coordinate(char *line, int i)
 {
-	int	j;
+	int			j;
+	long long	nb;
 
 	j = 0;
-	while (i >= 0 && (line[i] != ' ' || line[i] != '-'))
+	while (i >= 0 && line[i] != ' ')
 	{
 		if (ft_isdigit(line[i--] == 1))
 			return (-1);
 		j++;
 	}
-	if (j > 10)
+	nb = ft_atol(line + i);
+	if (j > 11 || nb > 2147483647 || nb < -2147483648)
 		return (-1);
-	j += (line[i] == '-') ? 1 : 0;
 	return (j);
 }
 
@@ -62,10 +63,11 @@ int	is_room(char *line)
 	int	len_x;
 	int	len_y;
 
+	len_y = 0;
 	if (line[0] == 'L' || line[0] == '#')
 		return (-1);
-	len_x = is_coordinate(line, (int)ft_strlen(line));
-	len_y = is_coordinate(line, (int)ft_strlen(line) - len_x - 1);
+	if ((len_x = is_coordinate(line, (int)ft_strlen(line))) > 0)
+		len_y = is_coordinate(line, (int)ft_strlen(line) - len_x - 1);
 	if (len_x <= 0 || len_y <= 0)
 		return (-1);
 	return (0);

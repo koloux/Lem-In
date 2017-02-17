@@ -6,27 +6,50 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 09:21:17 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/17 18:25:51 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/02/17 19:38:12 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 #include <stdio.h>
 
-/*
-static int	params_cmd(int fd, char *line)
+static int	params_cmd(int fd, char *line, t_vector *anthill)
 {
 	char	*room;
 
 	room = NULL;
-	if (is_cmd(line) > 0)
+	if (is_cmd(line) == 1 || is_cmd(line) == 2)
 	{
-		get_next_line(fd, &room);
-		is_room(room);
+		if (get_next_line(fd, &room) > 0)
+		{
+			is_room(room);
+		}
+		else
+			return (-1);
 	}
+	if (is_cmd(line) == 3)
+		map_text(anthill, line);
 	return (0);
 }
-*/
+
+static int	params_room(int fd, t_vector *anthill, int antnb)
+{
+	char	*buff;
+	int		i;
+
+	i = 0;
+	while (get_next_line(fd, &buff) > 0 && i == 0)
+	{
+		if (params_cmd(fd, buff, anthill) < 0)
+			i = -1;
+		antnb = 3;
+		//check if it is a room
+		free(buff);
+	}
+	if (i <= 0)//check if start end
+		print_usage(4);
+	return (0);
+}
 
 static int	params_ant(int fd, t_vector *anthill)
 {
@@ -53,20 +76,22 @@ static int	params_ant(int fd, t_vector *anthill)
 	return (i);
 }
 
-static void	params_read(char *file, t_vector *anthill)
+static int	params_read(char *file, t_vector *anthill)
 {
 	int fd;
 	int	antnb;
 
 	if ((fd = open(file, O_RDONLY)) != -1)
 	{
-		if ((antnb = params_ant(fd, anthill)) > 0)
-		{
-			printf("%s", anthill->items[0]);	
-		}
+		if ((antnb = params_ant(fd, anthill)) < 0)
+			return (-1);
+		printf("%s", anthill->items[0]);
+		if (params_room(fd, anthill, antnb) < 0)
+			return (-1);
 	}
 	else
 		print_usage(1);
+	return (0);
 }
 
 void		params(char **av, t_vector *anthill)
