@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 16:02:05 by nhuber            #+#    #+#             */
-/*   Updated: 2016/03/31 18:47:12 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/02/17 17:52:55 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ char				*ft_strnstr(const char *big, const char *little,
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_atoi(const char *str);
+long long			ft_atol(const char *str);
 int					ft_isalpha(int c);
 int					ft_isupper(int c);
 int					ft_islower(int c);

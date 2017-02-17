@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector.c                                           :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/30 18:41:16 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/17 17:03:46 by nhuber           ###   ########.fr       */
+/*   Created: 2017/02/17 12:17:41 by nhuber            #+#    #+#             */
+/*   Updated: 2017/02/17 18:25:03 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.h"
+#include "lem_in.h"
 
-t_vector	*vector_construct(int init_capacity)
+void	map_text(t_vector *anthill, char *line)
 {
-	t_vector	*v;
-	int			c;
+	char	*str;
+	char	*tmp;
+	char	*tmp2;
 
-	c = init_capacity ? init_capacity : VECTOR_CAPACITY_INIT;
-	if (!(v = (t_vector *)malloc(sizeof(t_vector))))
-		return (NULL);
-	if (!(v->items = (void **)malloc(sizeof(void *) * c)))
-		return (NULL);
-	v->capacity = c;
-	v->size = 0;
-	return (v);
+	tmp = NULL;
+	tmp2 = NULL;
+	str = ft_strjoin(line, "\n");
+	if (anthill->size == 0)
+	{
+		anthill->items[0] = str;
+		anthill->size = 1; 
+	}
+	else
+	{
+		tmp = anthill->items[0];
+		tmp2 = ft_strjoin(tmp, str);
+		free(tmp);
+		anthill->items[0] = tmp2;
+	}
 }

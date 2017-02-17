@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 16:48:24 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/16 16:57:09 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/02/17 18:22:33 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,29 +26,40 @@ typedef struct	s_node
 	int	weight;
 	int	x;
 	int	y;
-}		t_node;
+}			t_node;
+
+/*
+ * room : t_node
+ */
+t_node		*room_construct(char *name);
 
 /*
  * utility
  */
-int	is_antnb(char *line);
-int	is_cmd(char *line);
-int	is_room(char *line);
+int			is_antnb(char *line);
+int			is_cmd(char *line);
+int			is_coordinate(char *line, int i);
+int			is_room(char *line);
 
 /*
  * params : read / open / close
  */
-void	params(char **av);
+void		params(char **av, t_vector *anthill);
+
+/*
+ * map
+ */
+void		map_text(t_vector *anthill, char *line);
 
 /*
  * print
  */
-void	print_usage(int error);
+void		print_usage(int error);
 
 /*
  * error handling
  */
-int	error_arg(int ac);
+int			error_arg(int ac);
 
 
 #endif

@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector.c                                           :+:      :+:    :+:   */
+/*   room.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/30 18:41:16 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/17 17:03:46 by nhuber           ###   ########.fr       */
+/*   Created: 2017/02/17 11:56:14 by nhuber            #+#    #+#             */
+/*   Updated: 2017/02/17 12:06:15 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.h"
+#include "lem_in.h"
 
-t_vector	*vector_construct(int init_capacity)
+t_node	*room_construct(char *name)
 {
-	t_vector	*v;
-	int			c;
+	t_node	*room;
 
-	c = init_capacity ? init_capacity : VECTOR_CAPACITY_INIT;
-	if (!(v = (t_vector *)malloc(sizeof(t_vector))))
-		return (NULL);
-	if (!(v->items = (void **)malloc(sizeof(void *) * c)))
-		return (NULL);
-	v->capacity = c;
-	v->size = 0;
-	return (v);
+	if ((room = (t_node*)malloc(sizeof(t_node))) != NULL)
+	{
+		room->name = ft_strdup(name);
+		room->s_e = -1;
+		room->weight = -1;
+	}
+	return (room);
 }
