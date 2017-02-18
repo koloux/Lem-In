@@ -6,7 +6,7 @@
 #    By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/30 17:55:34 by nhuber            #+#    #+#              #
-#    Updated: 2017/01/26 11:14:06 by nhuber           ###   ########.fr        #
+#    Updated: 2017/02/18 12:05:32 by nhuber           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ FILES = vector_construct.c \
 		vector_resize.c \
 		vector_add.c \
 		vector_delone.c \
+		items_cpy.c \
 		vector_destruct.c
 TMP = Makefile~ libvetor.h~ $(FILES:.c=.c~)
 OBJ = $(FILES:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/16 13:40:21 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/17 19:38:17 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/02/18 14:15:28 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,12 @@ int	is_coordinate(char *line, int i)
 		j++;
 	}
 	nb = ft_atol(line + i);
-	if (j > 11 || nb > 2147483647 || nb < -2147483648)
+	if (i == 0 || j > 11 || nb > 2147483647 || nb < -2147483648)
 		return (-1);
 	return (j);
 }
 
-int	is_room(char *line)
+int	is_room(t_vector *anthill, char *line)
 {
 	int	len_x;
 	int	len_y;
@@ -67,8 +67,38 @@ int	is_room(char *line)
 	if (line[0] == 'L' || line[0] == '#')
 		return (-1);
 	if ((len_x = is_coordinate(line, (int)ft_strlen(line))) > 0)
-		len_y = is_coordinate(line, (int)ft_strlen(line) - len_x - 1);
+	{
+		if ((len_y = is_coordinate(line, (int)ft_strlen(line) - len_x - 1)) > 0)
+			is_name(anthill, line, (int)ft_strlen(line) - (len_x + len_y + 1));
+	}
 	if (len_x <= 0 || len_y <= 0)
 		return (-1);
 	return (0);
+}
+#include <stdio.h>
+int	is_name(t_vector *anthill, char *line, int len)
+{
+	int		i;
+	int		j;
+	char	*name;
+	t_node	*test;
+
+	i = 0;
+	while (i <= len && i != -1)
+	{
+		if (line[i++] == '-')
+			i = -1;
+	}
+	if ((name = ft_strnew(len)) == NULL)
+		return (-1);
+	ft_strncpy(name, line, len);
+	j = 1;
+	while (j < anthill->size && i != -1)
+	{
+		test = anthill->items[j];
+		if (ft_strcmp(test->name, name) == 0)
+			i = -1;
+		j++;
+	}
+	return ((i == -1) ? -1 : 0);
 }

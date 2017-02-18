@@ -12,7 +12,7 @@
 
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
-NAME = lem_in
+NAME = lem-in
 H_DIR = header
 F_DIR = srcs
 L_DIR = libft

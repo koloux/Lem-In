@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 09:21:17 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/17 19:38:12 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/02/18 12:04:34 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,16 @@ static int	params_cmd(int fd, char *line, t_vector *anthill)
 	room = NULL;
 	if (is_cmd(line) == 1 || is_cmd(line) == 2)
 	{
-		if (get_next_line(fd, &room) > 0)
+		if (get_next_line(fd, &room) >= 0)
 		{
-			is_room(room);
+			if (is_room(anthill, room) == 0)
+			{
+				map_text(anthill, line);
+				map_text(anthill, room);
+				//vector_add(anthill, room_construct(get_name(room)));
+			}
+			else
+				return (-1);
 		}
 		else
 			return (-1);
@@ -91,6 +98,7 @@ static int	params_read(char *file, t_vector *anthill)
 	}
 	else
 		print_usage(1);
+	close(fd);
 	return (0);
 }
 

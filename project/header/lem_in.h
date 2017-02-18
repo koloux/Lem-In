@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 16:48:24 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/17 18:36:41 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/02/18 11:57:32 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct	s_node
 /*
  * room : t_node
  */
-t_node		*room_construct(char *name);
+t_node		*room_construct(char *name, int x, int y);
 
 /*
  * utility
@@ -39,7 +39,8 @@ t_node		*room_construct(char *name);
 int			is_antnb(char *line);
 int			is_cmd(char *line);
 int			is_coordinate(char *line, int i);
-int			is_room(char *line);
+int			is_room(t_vector *anthill, char *line);
+int			is_name(t_vector *anthill, char *line, int len);
 
 /*
  * params : read / open / close
