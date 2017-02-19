@@ -17,11 +17,13 @@ H_DIR = header
 F_DIR = srcs
 L_DIR = libft
 V_DIR = libvector
-FILES = $(F_DIR)/main.c \
+FILES = $(F_DIR)/lem_in.c \
+		$(F_DIR)/get.c \
 		$(F_DIR)/map.c \
 		$(F_DIR)/print.c \
 		$(F_DIR)/room.c \
 		$(F_DIR)/utility.c \
+		$(F_DIR)/utility2.c \
 		$(F_DIR)/get_next_line.c \
 		$(F_DIR)/error.c \
 		$(F_DIR)/params.c

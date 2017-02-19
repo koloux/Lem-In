@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 16:48:24 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/18 11:57:32 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/02/19 16:29:37 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,21 @@ typedef struct	s_node
 t_node		*room_construct(char *name, int x, int y);
 
 /*
- * utility
+ * utility / utility2
  */
 int			is_antnb(char *line);
 int			is_cmd(char *line);
 int			is_coordinate(char *line, int i);
 int			is_room(t_vector *anthill, char *line);
 int			is_name(t_vector *anthill, char *line, int len);
+int			is_duplicatename(t_vector *anthill, char *line, int len);
+int			is_duplicatecoordinate(t_vector *anthill, char *line,
+				int len_x, int len_y);
+
+/*
+ * get
+ */
+int			get_nb(char *line, int len_x, int len_y);
 
 /*
  * params : read / open / close

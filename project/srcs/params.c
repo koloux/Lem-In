@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 09:21:17 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/18 12:04:34 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/02/19 16:29:30 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@ static int	params_cmd(int fd, char *line, t_vector *anthill)
 	room = NULL;
 	if (is_cmd(line) == 1 || is_cmd(line) == 2)
 	{
+		map_text(anthill, line);
 		if (get_next_line(fd, &room) >= 0)
 		{
 			if (is_room(anthill, room) == 0)
 			{
-				map_text(anthill, line);
 				map_text(anthill, room);
+				//TO DO : build room
 				//vector_add(anthill, room_construct(get_name(room)));
 			}
 			else
@@ -44,16 +45,22 @@ static int	params_room(int fd, t_vector *anthill, int antnb)
 	char	*buff;
 	int		i;
 
+	antnb = 3;
 	i = 0;
 	while (get_next_line(fd, &buff) > 0 && i == 0)
 	{
 		if (params_cmd(fd, buff, anthill) < 0)
 			i = -1;
-		antnb = 3;
-		//check if it is a room
+		//TO DO : build room
+		if (i != -1 && is_room(anthill, buff) >= 0)
+		{
+			map_text(anthill, buff);
+		}
+		else
+			i = -1;
 		free(buff);
 	}
-	if (i <= 0)//check if start end
+	if (i <= 0)//check if start end exists
 		print_usage(4);
 	return (0);
 }

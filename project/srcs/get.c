@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   room.c                                             :+:      :+:    :+:   */
+/*   get.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/17 11:56:14 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/19 16:21:41 by nhuber           ###   ########.fr       */
+/*   Created: 2017/02/19 12:45:52 by nhuber            #+#    #+#             */
+/*   Updated: 2017/02/19 16:29:31 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-t_node	*room_construct(char *name, int x, int y)
+int		get_nb(char *line, int len_x, int len_y)
 {
-	t_node	*room;
+	char	*str;
+	int		y;
+	int		len;
+	int		i;
 
-	if ((room = (t_node*)malloc(sizeof(t_node))) != NULL)
+	if ((str = ft_strnew((len_x > len_y) ? len_x : len_y)) == NULL)
+		return (-1);
+	len = (int)ft_strlen(line);
+	i = 0;
+	while (i < len_y)
 	{
-		room->name = ft_strdup(name);
-		room->s_e = -1;
-		room->weight = -1;
-		room->x = x;
-		room->y = y;
+		str[i] = line[i + (len - (len_x + len_y))];
+		i++;
 	}
-	return (room);
+	str[i] = '\0';
+	y = ft_atoi(str);
+	free(str);
+	return (y);
 }
 
-void	room_destruct(t_node *room)
+char	*get_name(char *line, int len)
 {
-	free(room->name);
-	free(room);
+	
+
 }
