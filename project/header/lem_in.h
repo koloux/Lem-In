@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 16:48:24 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/28 15:54:12 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/02/28 17:42:33 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,51 @@ typedef struct	s_node
 }			t_node;
 
 /*
+ * error message
+ */
+int			error_arg(int ac);
+
+/*
+ * get
+ */
+int			get_nb(char *line, int len_x, int len_y);
+char		*get_name_room(char *line);
+int			get_room_index(t_vector *anthill, char *name);
+int			get_se_index(t_vector *anthill, int se);
+
+/*
+ * map
+ */
+void		map_text(t_vector *anthill, char *line);
+
+/*
+ * set
+ */
+void		set_s_e(t_vector *anthill, int s_e);
+void		set_weight(t_vector *anthill, int i, int w);
+
+/*
+ * params : read / open / close
+ */
+int			params(char *av, t_vector *anthill);
+
+/*
+ * print
+ */
+void		print_usage(int error);
+
+/*
  * room : t_node
  */
 t_node		*room_construct(char *name, int s_e);
 void		room_destruct(void *room);
 void		room_tubes(t_vector *anthill);
 void		room_link(t_vector *anthill, char *tube);
+
+/*
+ * solve
+ */
+int			solve(t_vector *anthill);
 
 /*
  * utility / utility2 / utility3
@@ -53,39 +92,6 @@ int			is_duplicatecmd(t_vector *anthill);
 int			is_duplicatetube(t_vector *anthill, char **tubes);
 int			is_tube(t_vector *anthill, char *tube);
 
-/*
- * get
- */
-int			get_nb(char *line, int len_x, int len_y);
-char		*get_name_room(char *line);
-int			get_room_index(t_vector *anthill, char *name);
-int			get_start_index(t_vector *anthill);
-
-/*
- * set
- */
-void		set_s_e(t_vector *anthill, int s_e);
-void		set_weight(t_vector *anthill, int w);
-
-/*
- * params : read / open / close
- */
-int			params(char *av, t_vector *anthill);
-
-/*
- * map
- */
-void		map_text(t_vector *anthill, char *line);
-
-/*
- * print
- */
-void		print_usage(int error);
-
-/*
- * error handling
- */
-int			error_arg(int ac);
 
 
 #endif

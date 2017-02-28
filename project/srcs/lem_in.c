@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 16:40:17 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/28 15:28:58 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/02/28 17:51:37 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int			main(int ac, char **av)
 		anthill = vector_construct(4);
 		params(av[1], anthill);
 		ft_putstr(anthill->items[0]);
+		solve(anthill);
 		empty(anthill);
 	}
 	return (0);

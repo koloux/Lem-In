@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 15:10:35 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/28 16:01:03 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/02/28 17:52:37 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,24 @@
 int		solve(t_vector *anthill)
 {
 	int		s;
+	int		w;
 	int		i;
 	t_node	*tmp;
-	t_node	*tmp2;
 
-	s = get_start_index(anthill);
+	w = 1;
+	s = get_se_index(anthill, 1);
+	set_weight(anthill, s, w);
 	tmp = anthill->items[s];
-	i = 0;
-	while (tmp->tubes[i])
+	while (w < anthill->size)
 	{
-		if (tmp->tubes[i] != '0')
+		i = 0;
+		while (++i < anthill->size)
 		{
-			tmp2 = anthill->items[tmp->tubes[i]];
-			tmp2->weight = w;
-			tmp2->prev = get_room_index(anthill, tmp->name);
+			tmp = anthill->items[i];
+			if (tmp->weight == w)
+				set_weight(anthill, i, w + 1);
 		}
-		j++;
+		w++;
 	}
-	return (0);	
+	return (0);
 }
-
-//on set tout les tmp->tubes a w = 1
-//si tmp->tubes[i] != '0'
-//alors anthill->items[tmp->tubes]->weight = w 

@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 09:21:17 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/28 15:32:51 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/02/28 17:55:23 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,14 +97,15 @@ int			params(char *file, t_vector *anthill)
 	char	*buff;
 
 	er = 0;
+	antnb = 0;
 	if ((fd = open(file, O_RDONLY)) != -1)
 	{
 		while (er != -1 && get_next_line(fd, &buff) > 0)
 		{
 			if (is_cmd(buff) >= 0)
 				er = params_cmd(fd, buff, anthill);
-			else if ((antnb = params_ant(buff, anthill)) > 0)
-				er = 3;
+			else if (antnb == 0)
+				antnb = params_ant(buff, anthill);
 			else if (params_room(buff, anthill) >= 0)
 				er = 1;
 			else if (params_tube(buff, anthill, er) >= 0)

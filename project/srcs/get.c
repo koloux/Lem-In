@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/19 12:45:52 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/28 16:01:05 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/02/28 17:43:00 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int		get_room_index(t_vector *anthill, char *name)
 	return (0);
 }
 
-int		get_start_index(t_vector *anthill)
+int		get_se_index(t_vector *anthill, int se)
 {
 	int		i;
 	t_node	*tmp;
@@ -74,7 +74,7 @@ int		get_start_index(t_vector *anthill)
 	while (++i < anthill->size)
 	{
 		tmp = anthill->items[i];
-		if (tmp->s_e == 1)
+		if (tmp->s_e == se)
 			return (i);
 	}
 	return (0);
