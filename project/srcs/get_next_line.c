@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 17:00:19 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/21 13:10:36 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/02/28 13:06:21 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,7 @@ char	*gnl_trim(int fd, t_gnl **head)
 	{
 		if (!(bgn = ft_strdup((char *)elem->content)))
 			return (NULL);
-		free((*elem).content);
-		elem->content = NULL;
-		elem->content_size = 0;
+		ft_memdel(&(elem)->content);
 	}
 	return (bgn);
 }

@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 16:48:24 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/24 14:06:59 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/02/28 12:17:09 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct	s_node
 t_node		*room_construct(char *name, int s_e);
 void		room_destruct(void *room);
 void		room_tubes(t_vector *anthill);
+void		room_link(t_vector *anthill, char *tube);
 
 /*
  * utility / utility2
@@ -55,7 +56,8 @@ int			is_tube(t_vector *anthill, char *tube);
  * get
  */
 int			get_nb(char *line, int len_x, int len_y);
-char			*get_name(char *line);
+char		*get_name_room(char *line);
+int			get_room_index(t_vector *anthill, char *name);
 
 /*
  * params : read / open / close

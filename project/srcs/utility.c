@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/16 13:40:21 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/24 10:34:10 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/02/28 13:01:58 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ int	is_room(t_vector *anthill, char *line)
 		if ((len_x = is_coordinate(line, (int)ft_strlen(line) - len_y - 1)) > 0)
 		{
 			id = is_duplicatecoordinate(anthill, line, len_x, len_y);
-			id += (id == 0) ? is_name(anthill, line, (int)ft_strlen(line) - (len_x + len_y + 1)) : -1;
+			id += (id == 0) ? is_name(anthill, line, (int)ft_strlen(line) -
+				(len_x + len_y + 1)) : -1;
 		}
 	}
 	if (id < 0 || len_x <= 0 || len_y <= 0)

@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/19 11:01:29 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/24 14:06:51 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/02/28 13:13:58 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	is_duplicatecoordinate(t_vector *anthill,
 {
 	int		x;
 	int		i;
-	int 	er;
+	int		er;
 	t_node	*tmp;
 
 	x = get_nb(line, len_x, len_y);
@@ -59,9 +59,9 @@ int	is_duplicatecoordinate(t_vector *anthill,
 int	is_duplicatecmd(t_vector *anthill)
 {
 	t_node	*tmp;
-	int 	i;
-	int	s;
-	int	e;
+	int		i;
+	int		s;
+	int		e;
 
 	s = 0;
 	e = 0;
@@ -73,7 +73,7 @@ int	is_duplicatecmd(t_vector *anthill)
 		e += (tmp->s_e == 1) ? 1 : 0;
 		i++;
 	}
-	if (s > 1 && e > 1)
+	if (s > 1 || e > 1)
 		return (-1);
 	return (e + s);
 }
@@ -81,33 +81,16 @@ int	is_duplicatecmd(t_vector *anthill)
 int	is_duplicatetube(t_vector *anthill, char **tubes)
 {
 	t_node	*tmp;
-	t_node	*tmp2;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
-	i = 1;
-	j = 1;
-	while (i < anthill->size)
-	{
-		tmp = anthill->items[i];
-		while (j < anthill->size &&
-			ft_strcmp(tubes[0], tmp->name) == 0)
-		{
-			tmp2 = anthill->items[j];
-			if (ft_strcmp(tubes[1], tmp2->name) == 0)
-			{
-				i = 0;	
-				while (tmp->tubes[i])
-				{
-					if (tmp->tubes[i] == j + '0')
-						return (-1);
-					i++;
-				}	
-			}
-			j++;
-		}
-		i++;
-	}
-
+	i = get_room_index(anthill, tubes[0]);
+	j = get_room_index(anthill, tubes[1]);
+	tmp = anthill->items[i];
+	if (tmp->tubes[j] == 1)
+		return (-1);
+	tmp = anthill->items[j];
+	if (tmp->tubes[i] == 1)
+		return (-1);
 	return (0);
 }

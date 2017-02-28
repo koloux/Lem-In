@@ -6,13 +6,13 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/19 12:45:52 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/24 10:32:36 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/02/28 13:01:03 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int	get_nb(char *line, int len_x, int len_y)
+int		get_nb(char *line, int len_x, int len_y)
 {
 	char	*str;
 	int		y;
@@ -34,10 +34,10 @@ int	get_nb(char *line, int len_x, int len_y)
 	return (y);
 }
 
-char	*get_name(char *line)
+char	*get_name_room(char *line)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*name;
 
 	i = (int)ft_strlen(line);
@@ -49,3 +49,18 @@ char	*get_name(char *line)
 	return (name);
 }
 
+int		get_room_index(t_vector *anthill, char *name)
+{
+	int		i;
+	t_node	*tmp;
+
+	i = 1;
+	while (i < anthill->size)
+	{
+		tmp = anthill->items[i];
+		if (ft_strcmp(tmp->name, name) == 0)
+			return (i);
+		i++;
+	}
+	return (0);
+}

@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 16:40:17 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/25 10:49:57 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/02/28 12:57:27 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,24 @@ int	main(int ac, char **av)
 	{
 		anthill = vector_construct(4);
 		params(av[1], anthill);
-		printf("%s", anthill->items[0]);
+		printf("\n\n\n%s", anthill->items[0]);
 		//vector_destruct(anthill, &room_destruct);
 	}
 	return (0);
 }
+
+/*
+
+		room_tubes(anthill);
+		room_link(anthill, "Salut-Mon");
+		room_link(anthill, "T'-Aime");
+		room_link(anthill, "Mon-Ami");
+		room_link(anthill, "Je-Mon");
+		char	*room[2];
+		room[0] = "Salut";
+		room[1] = "Mon";
+		printf("%d\n", is_duplicatetube(anthill, room));
+*/
 
 /*
    int i;
