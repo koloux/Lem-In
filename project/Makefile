@@ -6,7 +6,7 @@
 #*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2016/03/07 09:32:29 by nhuber            #+#    #+#             *#
-#*   Updated: 2017/02/16 14:13:58 by nhuber           ###   ########.fr       *#
+#*   Updated: 2017/02/24 10:34:48 by nhuber           ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -24,6 +24,7 @@ FILES = $(F_DIR)/lem_in.c \
 		$(F_DIR)/room.c \
 		$(F_DIR)/utility.c \
 		$(F_DIR)/utility2.c \
+		$(F_DIR)/utility3.c \
 		$(F_DIR)/get_next_line.c \
 		$(F_DIR)/error.c \
 		$(F_DIR)/params.c

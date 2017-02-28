@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 16:48:24 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/19 16:29:37 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/02/24 14:06:59 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,15 @@ typedef struct	s_node
 	int	weight;
 	int	x;
 	int	y;
+	char	*tubes;
 }			t_node;
 
 /*
  * room : t_node
  */
-t_node		*room_construct(char *name, int x, int y);
+t_node		*room_construct(char *name, int s_e);
+void		room_destruct(void *room);
+void		room_tubes(t_vector *anthill);
 
 /*
  * utility / utility2
@@ -44,16 +47,20 @@ int			is_name(t_vector *anthill, char *line, int len);
 int			is_duplicatename(t_vector *anthill, char *line, int len);
 int			is_duplicatecoordinate(t_vector *anthill, char *line,
 				int len_x, int len_y);
+int			is_duplicatecmd(t_vector *anthill);
+int			is_duplicatetube(t_vector *anthill, char **tubes);
+int			is_tube(t_vector *anthill, char *tube);
 
 /*
  * get
  */
 int			get_nb(char *line, int len_x, int len_y);
+char			*get_name(char *line);
 
 /*
  * params : read / open / close
  */
-void		params(char **av, t_vector *anthill);
+int		params(char *av, t_vector *anthill);
 
 /*
  * map

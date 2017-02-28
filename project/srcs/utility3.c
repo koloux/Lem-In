@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   utility3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/15 09:53:03 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/22 11:13:07 by nhuber           ###   ########.fr       */
+/*   Created: 2017/02/22 15:50:58 by nhuber            #+#    #+#             */
+/*   Updated: 2017/02/24 11:20:15 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	print_usage(int error)
+int	is_tube(t_vector *anthill, char *tube)
 {
-	ft_putendl("ERROR");
-	if (error == 1)
-		ft_putendl("\tUsage : ./lem_in <file_name>");
-	if (error == 2)
-		ft_putendl("\tWrong number of arguments");
-	if (error == 3)
-		ft_putendl("\tWrong phase 1 : Ants Number");
-	if (error == 4)
-		ft_putendl("\tWrong phase 2 : Rooms");
+	char	**tmp;
+	int	er;
+
+	er = 0;
+	tmp = ft_strsplit(tube, '-');
+	printf("t1 : %s\nt2 : %s\n", tmp[0], tmp[1]);
+	if (tmp[2] != NULL)
+		return (-1);
+	er += is_duplicatename(anthill, tmp[0], (int)ft_strlen(tmp[0]));
+	er += is_duplicatename(anthill, tmp[1], (int)ft_strlen(tmp[1]));
+	return (er);
 }

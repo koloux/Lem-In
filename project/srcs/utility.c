@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/16 13:40:21 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/19 16:29:28 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/02/24 10:34:10 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	is_room(t_vector *anthill, char *line)
 	int	len_y;
 	int	id;
 
-	len_y = 0;
+	len_x = 0;
 	id = 0;
 	if (line[0] == 'L' || line[0] == '#')
 		return (-1);
