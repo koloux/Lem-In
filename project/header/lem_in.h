@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 16:48:24 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/28 12:17:09 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/02/28 15:54:12 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@
 typedef struct	s_node
 {
 	char	*name;
-	int	s_e;
-	int	weight;
-	int	x;
-	int	y;
+	int		s_e;
+	int		weight;
+	int		prev;
+	int		x;
+	int		y;
 	char	*tubes;
 }			t_node;
 
@@ -38,7 +39,7 @@ void		room_tubes(t_vector *anthill);
 void		room_link(t_vector *anthill, char *tube);
 
 /*
- * utility / utility2
+ * utility / utility2 / utility3
  */
 int			is_antnb(char *line);
 int			is_cmd(char *line);
@@ -58,11 +59,18 @@ int			is_tube(t_vector *anthill, char *tube);
 int			get_nb(char *line, int len_x, int len_y);
 char		*get_name_room(char *line);
 int			get_room_index(t_vector *anthill, char *name);
+int			get_start_index(t_vector *anthill);
+
+/*
+ * set
+ */
+void		set_s_e(t_vector *anthill, int s_e);
+void		set_weight(t_vector *anthill, int w);
 
 /*
  * params : read / open / close
  */
-int		params(char *av, t_vector *anthill);
+int			params(char *av, t_vector *anthill);
 
 /*
  * map

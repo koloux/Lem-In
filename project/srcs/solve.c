@@ -1,46 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem_in.c                                           :+:      :+:    :+:   */
+/*   solve.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/16 16:40:17 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/28 15:28:58 by nhuber           ###   ########.fr       */
+/*   Created: 2017/02/28 15:10:35 by nhuber            #+#    #+#             */
+/*   Updated: 2017/02/28 16:01:03 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-#include <stdio.h>
 
-static void	empty(t_vector *anthill)
+int		solve(t_vector *anthill)
 {
+	int		s;
 	int		i;
 	t_node	*tmp;
+	t_node	*tmp2;
 
+	s = get_start_index(anthill);
+	tmp = anthill->items[s];
 	i = 0;
-	free(anthill->items[0]);
-	while (++i < anthill->size)
+	while (tmp->tubes[i])
 	{
-		tmp = anthill->items[i];
-		room_destruct(tmp);
+		if (tmp->tubes[i] != '0')
+		{
+			tmp2 = anthill->items[tmp->tubes[i]];
+			tmp2->weight = w;
+			tmp2->prev = get_room_index(anthill, tmp->name);
+		}
+		j++;
 	}
-	free(anthill->items);
-	free(anthill);
+	return (0);	
 }
 
-int			main(int ac, char **av)
-{
-	t_vector	*anthill;
-
-	if (ac != 2)
-		print_usage(2);
-	else
-	{
-		anthill = vector_construct(4);
-		params(av[1], anthill);
-		ft_putstr(anthill->items[0]);
-		empty(anthill);
-	}
-	return (0);
-}
+//on set tout les tmp->tubes a w = 1
+//si tmp->tubes[i] != '0'
+//alors anthill->items[tmp->tubes]->weight = w 

@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 09:21:17 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/28 13:14:52 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/02/28 15:32:51 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,10 @@ static int	params_tube(char *tube, t_vector *anthill, int er)
 	return (i);
 }
 
-static int	params_room(char *buff, t_vector *anthill, int antnb)
+static int	params_room(char *buff, t_vector *anthill)
 {
 	int	er;
 
-	antnb = 3;
 	er = 0;
 	if (is_room(anthill, buff) >= 0)
 	{
@@ -66,19 +65,25 @@ static int	params_cmd(int fd, char *line, t_vector *anthill)
 {
 	char	*room;
 	int		er;
+	int		cmd;
 
 	room = NULL;
 	er = 0;
-	if (is_cmd(line) == 1 || is_cmd(line) == 2)
+	cmd = is_cmd(line);
+	if (cmd == 1 || cmd == 2)
 	{
 		er += (is_duplicatecmd(anthill) > 2) ? -1 : 0;
 		(er == -1) ? 0 : map_text(anthill, line);
 		if (er != -1 && get_next_line(fd, &room) > 0)
-			er = params_room(room, anthill, 0);
+		{
+			er = params_room(room, anthill);
+			if (er == 0)
+				set_s_e(anthill, cmd);
+		}
 		else
 			er = -1;
 	}
-	if (is_cmd(line) == 0)
+	if (cmd == 0)
 		map_text(anthill, line);
 	free(room);
 	return (er);
@@ -99,8 +104,8 @@ int			params(char *file, t_vector *anthill)
 			if (is_cmd(buff) >= 0)
 				er = params_cmd(fd, buff, anthill);
 			else if ((antnb = params_ant(buff, anthill)) > 0)
-				er = 0;
-			else if (params_room(buff, anthill, antnb) >= 0)
+				er = 3;
+			else if (params_room(buff, anthill) >= 0)
 				er = 1;
 			else if (params_tube(buff, anthill, er) >= 0)
 				er = 2;
@@ -110,5 +115,5 @@ int			params(char *file, t_vector *anthill)
 		}
 	}
 	close(fd);
-	return (0);
+	return (er);
 }

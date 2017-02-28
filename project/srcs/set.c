@@ -1,46 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem_in.c                                           :+:      :+:    :+:   */
+/*   set.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/16 16:40:17 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/28 15:28:58 by nhuber           ###   ########.fr       */
+/*   Created: 2017/02/28 15:19:42 by nhuber            #+#    #+#             */
+/*   Updated: 2017/02/28 16:00:24 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-#include <stdio.h>
 
-static void	empty(t_vector *anthill)
+void	set_s_e(t_vector *anthill, int s_e)
 {
-	int		i;
 	t_node	*tmp;
 
-	i = 0;
-	free(anthill->items[0]);
-	while (++i < anthill->size)
-	{
-		tmp = anthill->items[i];
-		room_destruct(tmp);
-	}
-	free(anthill->items);
-	free(anthill);
+	tmp = anthill->items[anthill->size - 1];
+	tmp->s_e = s_e;
 }
 
-int			main(int ac, char **av)
+void	set_weight(t_vector *anthill, int i, int w)
 {
-	t_vector	*anthill;
+	t_node	*tmp;
 
-	if (ac != 2)
-		print_usage(2);
-	else
-	{
-		anthill = vector_construct(4);
-		params(av[1], anthill);
-		ft_putstr(anthill->items[0]);
-		empty(anthill);
-	}
-	return (0);
+	tmp = anthill->items[i];
+	tmp->weight = w;
+}
+
+void	set_prev(t_vector *anthill, int i, int prev)
+{
+	t_node	*tmp;
+
+	tmp = anthill->items[i];
+	tmp->prev = prev;
 }

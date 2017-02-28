@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 11:56:14 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/28 13:01:31 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/02/28 15:54:34 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ t_node	*room_construct(char *name, int s_e)
 		room->tubes = NULL;
 		room->s_e = s_e;
 		room->weight = -1;
+		room->prev = 0;
 	}
+	else
+		free(name);
 	return (room);
 }
 
@@ -32,7 +35,8 @@ void	room_destruct(void *room)
 
 	tmp = (t_node *)room;
 	free(tmp->name);
-	free(tmp->tubes);
+	if (tmp->tubes != NULL)
+		free(tmp->tubes);
 	free(room);
 }
 

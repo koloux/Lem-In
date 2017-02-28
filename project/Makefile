@@ -19,6 +19,7 @@ L_DIR = libft
 V_DIR = libvector
 FILES = $(F_DIR)/lem_in.c \
 		$(F_DIR)/get.c \
+		$(F_DIR)/set.c \
 		$(F_DIR)/map.c \
 		$(F_DIR)/print.c \
 		$(F_DIR)/room.c \
@@ -27,6 +28,7 @@ FILES = $(F_DIR)/lem_in.c \
 		$(F_DIR)/utility3.c \
 		$(F_DIR)/get_next_line.c \
 		$(F_DIR)/error.c \
+		$(F_DIR)/solve.c \
 		$(F_DIR)/params.c
 TMP = Makefile~ $(NAME)~ $(FILES:.c=.c~)
 OBJ = $(FILES:.c=.o)
