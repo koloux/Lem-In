@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 11:56:14 by nhuber            #+#    #+#             */
-/*   Updated: 2017/03/01 10:47:26 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/03/01 18:42:08 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,5 @@ void	room_link(t_vector *anthill, char *tube)
 		tmp = anthill->items[j];
 		tmp->tubes[i] = '1';
 	}
+	del_str(rooms);
 }

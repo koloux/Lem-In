@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 16:48:24 by nhuber            #+#    #+#             */
-/*   Updated: 2017/03/01 17:49:34 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/03/01 18:40:47 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,5 @@ int				is_duplicatecmd(t_vector *anthill);
 int				is_duplicatetube(t_vector *anthill, char **tubes);
 int				is_tube(t_vector *anthill, char *tube);
 int				is_start_end(t_vector *anthill, int se);
+void			del_str(char **s);
 #endif

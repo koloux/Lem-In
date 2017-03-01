@@ -64,7 +64,7 @@ fclean: clean
 	@rm -f $(LIBFT)
 	@rm -f $(LIBVEC)
 	@echo fclean :"\n\t"$(LEMIN) deleted
-	@echo "\t"$(LIBVEC) "\n" $(LIBFT) deleted
+	@echo "\t"$(LIBVEC) "\n""\t"$(LIBFT) deleted
 
 norme:
 	@echo "\t\tNORME ERROR\n----------------------------------------------"

@@ -6,13 +6,13 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/22 15:50:58 by nhuber            #+#    #+#             */
-/*   Updated: 2017/03/01 10:42:11 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/03/01 18:02:57 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int	is_tube(t_vector *anthill, char *tube)
+int		is_tube(t_vector *anthill, char *tube)
 {
 	char	**tmp;
 	int		er;
@@ -37,7 +37,7 @@ int	is_tube(t_vector *anthill, char *tube)
 	return (er);
 }
 
-int	is_start_end(t_vector *anthill, int se)
+int		is_start_end(t_vector *anthill, int se)
 {
 	int	i;
 
@@ -47,4 +47,19 @@ int	is_start_end(t_vector *anthill, int se)
 	if (se == 2 && i != 0)
 		return (-1);
 	return (0);
+}
+
+void	del_str(char **s)
+{
+	int		i;
+	char	*tmp;
+
+	i = 0;
+	while (s[i] != NULL)
+	{
+		tmp = s[i];
+		ft_strdel(&tmp);
+		i++;
+	}
+	free(s);
 }
