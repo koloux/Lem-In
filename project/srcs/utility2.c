@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/19 11:01:29 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/28 16:52:58 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/03/01 10:33:26 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	is_duplicatecmd(t_vector *anthill)
 	{
 		tmp = anthill->items[i];
 		s += (tmp->s_e == 1) ? 1 : 0;
-		e += (tmp->s_e == 1) ? 1 : 0;
+		e += (tmp->s_e == 2) ? 1 : 0;
 		i++;
 	}
 	if (s > 1 || e > 1)

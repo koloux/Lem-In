@@ -6,13 +6,13 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 15:10:35 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/28 17:52:37 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/03/01 11:53:12 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int		solve(t_vector *anthill)
+static int		solve_path(t_vector *anthill)
 {
 	int		s;
 	int		w;
@@ -33,6 +33,22 @@ int		solve(t_vector *anthill)
 				set_weight(anthill, i, w + 1);
 		}
 		w++;
+	}
+	return (0);
+}
+
+int				solve(t_vector *anthill)
+{
+	t_node	*tmp;
+
+	if (error(anthill) != -1)
+		return (-1);
+	solve_path(anthill);
+	tmp = anthill->items[get_se_index(anthill, 2)];
+	if (tmp->prev == 0)
+	{
+		print_usage(3);
+		return (-1);
 	}
 	return (0);
 }

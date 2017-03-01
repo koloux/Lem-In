@@ -22,6 +22,7 @@ FILES = $(F_DIR)/lem_in.c \
 		$(F_DIR)/set.c \
 		$(F_DIR)/map.c \
 		$(F_DIR)/print.c \
+		$(F_DIR)/read.c \
 		$(F_DIR)/room.c \
 		$(F_DIR)/utility.c \
 		$(F_DIR)/utility2.c \

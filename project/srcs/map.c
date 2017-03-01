@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 12:17:41 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/28 13:08:53 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/03/01 11:03:21 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	map_text(t_vector *anthill, char *line)
 {
+	t_info	*info;
 	char	*str;
 	char	*tmp;
 	char	*tmp2;
@@ -21,17 +22,15 @@ void	map_text(t_vector *anthill, char *line)
 	tmp = NULL;
 	tmp2 = NULL;
 	str = ft_strjoin(line, "\n");
-	if (anthill->size == 0)
-	{
-		anthill->items[0] = str;
-		anthill->size = 1;
-	}
+	info = anthill->items[0];
+	if (info->text == NULL)
+		info->text = str;
 	else
 	{
-		tmp = anthill->items[0];
+		tmp = info->text;
 		tmp2 = ft_strjoin(tmp, str);
 		free(tmp);
 		free(str);
-		anthill->items[0] = tmp2;
+		info->text = tmp2;
 	}
 }

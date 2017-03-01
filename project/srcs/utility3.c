@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/22 15:50:58 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/28 17:53:46 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/03/01 10:42:11 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,16 @@ int	is_tube(t_vector *anthill, char *tube)
 		free(tmp[i++]);
 	free(tmp);
 	return (er);
+}
+
+int	is_start_end(t_vector *anthill, int se)
+{
+	int	i;
+
+	i = get_se_index(anthill, se);
+	if (se == 1 && i != 0)
+		return (-1);
+	if (se == 2 && i != 0)
+		return (-1);
+	return (0);
 }

@@ -6,14 +6,14 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 09:21:17 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/28 17:55:23 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/03/01 12:02:36 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 #include <stdio.h>
 
-static int	params_tube(char *tube, t_vector *anthill, int er)
+int	params_tube(char *tube, t_vector *anthill, int er)
 {
 	int	i;
 
@@ -30,7 +30,7 @@ static int	params_tube(char *tube, t_vector *anthill, int er)
 	return (i);
 }
 
-static int	params_room(char *buff, t_vector *anthill)
+int	params_room(char *buff, t_vector *anthill)
 {
 	int	er;
 
@@ -46,7 +46,7 @@ static int	params_room(char *buff, t_vector *anthill)
 	return (er);
 }
 
-static int	params_ant(char *buff, t_vector *anthill)
+int	params_ant(char *buff, t_vector *anthill)
 {
 	int	i;
 
@@ -58,10 +58,12 @@ static int	params_ant(char *buff, t_vector *anthill)
 	}
 	else
 		i = -1;
+	if (i > 0)
+		set_antnb(anthill, i);
 	return (i);
 }
 
-static int	params_cmd(int fd, char *line, t_vector *anthill)
+int	params_cmd(int fd, char *line, t_vector *anthill)
 {
 	char	*room;
 	int		er;
@@ -72,13 +74,14 @@ static int	params_cmd(int fd, char *line, t_vector *anthill)
 	cmd = is_cmd(line);
 	if (cmd == 1 || cmd == 2)
 	{
-		er += (is_duplicatecmd(anthill) > 2) ? -1 : 0;
+		er += is_start_end(anthill, cmd);
 		(er == -1) ? 0 : map_text(anthill, line);
 		if (er != -1 && get_next_line(fd, &room) > 0)
 		{
 			er = params_room(room, anthill);
 			if (er == 0)
 				set_s_e(anthill, cmd);
+			er = 1;
 		}
 		else
 			er = -1;
@@ -89,32 +92,26 @@ static int	params_cmd(int fd, char *line, t_vector *anthill)
 	return (er);
 }
 
-int			params(char *file, t_vector *anthill)
+int	params(char *file, t_vector *anthill)
 {
+	t_info	*info;
 	int		fd;
-	int		antnb;
 	int		er;
-	char	*buff;
 
 	er = 0;
-	antnb = 0;
 	if ((fd = open(file, O_RDONLY)) != -1)
 	{
-		while (er != -1 && get_next_line(fd, &buff) > 0)
+		if ((info = (t_info *)malloc(sizeof(t_info))) != NULL)
 		{
-			if (is_cmd(buff) >= 0)
-				er = params_cmd(fd, buff, anthill);
-			else if (antnb == 0)
-				antnb = params_ant(buff, anthill);
-			else if (params_room(buff, anthill) >= 0)
-				er = 1;
-			else if (params_tube(buff, anthill, er) >= 0)
-				er = 2;
-			else
-				er = -1;
-			free(buff);
+			anthill->items[0] = info;
+			info->text = NULL;
+			info->antnb = 0;
+			anthill->size++;
+			er = read_file(anthill, fd);
 		}
 	}
+	else
+		print_usage(0);
 	close(fd);
 	return (er);
 }

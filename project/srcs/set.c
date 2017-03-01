@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 15:19:42 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/28 17:40:28 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/03/01 11:05:46 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,12 @@ void	set_prev(t_vector *anthill, int i, int prev)
 
 	tmp = anthill->items[i];
 	tmp->prev = prev;
+}
+
+void	set_antnb(t_vector *anthill, int antnb)
+{
+	t_info	*info;
+
+	info = anthill->items[0];
+	info->antnb = antnb;
 }
