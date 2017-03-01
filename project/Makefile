@@ -6,7 +6,7 @@
 #*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2016/03/07 09:32:29 by nhuber            #+#    #+#             *#
-#*   Updated: 2017/02/24 10:34:48 by nhuber           ###   ########.fr       *#
+#*   Updated: 2017/03/01 22:38:01 by nhuber           ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -15,7 +15,7 @@ FLAGS = -Wall -Wextra -Werror
 LEMIN = lem-in
 FILES = lem_in.c set.c map.c print.c read.c room.c error.c solve.c \
 			params.c utility.c utility2.c utility3.c get.c get2.c \
-			get_next_line.c
+			get_next_line.c option.c
 
 F_DIR = srcs
 SRCS = $(addprefix $(F_DIR)/, $(FILES))

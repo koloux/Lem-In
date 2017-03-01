@@ -6,12 +6,11 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 16:40:17 by nhuber            #+#    #+#             */
-/*   Updated: 2017/03/01 17:59:06 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/03/01 23:34:39 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-#include <stdio.h>
 
 static void	empty(t_vector *anthill)
 {
@@ -36,21 +35,24 @@ int			main(int ac, char **av)
 {
 	t_vector	*anthill;
 	t_info		*info;
+	int		er;
 
 	info = NULL;
-	if (ac != 2)
-		print_usage(-2);
+	anthill = vector_construct(4);
+	er = option(ac, av);
+	if (er == 1)
+		er = option_params(av[2], anthill);
 	else
 	{
-		anthill = vector_construct(4);
-		params(av[1], anthill);
-		if (solve(anthill) == 0)
-		{
-			info = anthill->items[0];
-			ft_putendl(info->text);
-			print_path(anthill);
-		}
-		empty(anthill);
+		if (er == 0)
+			params(anthill);
 	}
+	if (er != -1 && solve(anthill) == 0)
+	{
+		info = anthill->items[0];
+		ft_putendl(info->text);
+		print_path(anthill);
+	}
+	empty(anthill);
 	return (0);
 }

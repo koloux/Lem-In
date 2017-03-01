@@ -6,12 +6,11 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 09:21:17 by nhuber            #+#    #+#             */
-/*   Updated: 2017/03/01 18:46:38 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/03/01 23:23:01 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-#include <stdio.h>
 
 int	params_tube(char *tube, t_vector *anthill, int er)
 {
@@ -92,26 +91,17 @@ int	params_cmd(int fd, char *line, t_vector *anthill)
 	return (er);
 }
 
-int	params(char *file, t_vector *anthill)
+int	params(t_vector *anthill)
 {
 	t_info	*info;
-	int		fd;
-	int		er;
 
-	er = 0;
-	if ((fd = open(file, O_RDONLY)) != -1)
+	if ((info = (t_info *)malloc(sizeof(t_info))) != NULL)
 	{
-		if ((info = (t_info *)malloc(sizeof(t_info))) != NULL)
-		{
-			anthill->items[0] = info;
-			info->text = NULL;
-			info->antnb = 0;
-			anthill->size++;
-			er = read_file(anthill, fd);
-		}
+		anthill->items[0] = info;
+		info->text = NULL;
+		info->antnb = 0;
+		anthill->size++;
+		read_file(anthill, 0);
 	}
-	else
-		print_usage(0);
-	close(fd);
-	return (er);
+	return (0);
 }

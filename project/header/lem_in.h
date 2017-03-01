@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 16:48:24 by nhuber            #+#    #+#             */
-/*   Updated: 2017/03/01 18:40:47 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/03/01 23:21:18 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void			map_text(t_vector *anthill, char *line);
 void			set_s_e(t_vector *anthill, int s_e);
 void			set_weight(t_vector *anthill, int i, int w);
 void			set_antnb(t_vector *anthill, int antnb);
-int				params(char *av, t_vector *anthill);
+int				params(t_vector *anthill);
 int				params_cmd(int fd, char *line, t_vector *anthill);
 int				params_ant(char *buff, t_vector *anthill);
 int				params_room(char *buff, t_vector *anthill);
@@ -75,4 +75,6 @@ int				is_duplicatetube(t_vector *anthill, char **tubes);
 int				is_tube(t_vector *anthill, char *tube);
 int				is_start_end(t_vector *anthill, int se);
 void			del_str(char **s);
+int				option(int ac, char **av);
+int				option_params(char *av, t_vector *anthill);
 #endif
