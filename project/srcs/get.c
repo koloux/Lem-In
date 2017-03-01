@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/19 12:45:52 by nhuber            #+#    #+#             */
-/*   Updated: 2017/03/01 12:30:35 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/03/01 15:07:15 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,12 @@ int		get_se_index(t_vector *anthill, int se)
 int		get_pathlen(t_vector *anthill)
 {
 	t_node	*tmp;
-	t_node	*tmp2;
 	int		len;
 	int		i;
 
 	tmp = anthill->items[get_se_index(anthill, 2)];
 	len = 0;
+	i = 0;
 	while (i != get_se_index(anthill, 1))
 	{
 		i = tmp->prev;

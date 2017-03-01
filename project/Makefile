@@ -12,55 +12,65 @@
 
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
-NAME = lem-in
-H_DIR = header
+LEMIN = lem-in
+FILES = lem_in.c set.c map.c print.c read.c room.c error.c solve.c \
+			params.c utility.c utility2.c utility3.c get.c get2.c \
+			get_next_line.c
+
 F_DIR = srcs
+SRCS = $(addprefix $(F_DIR)/, $(FILES))
+
+O_DIR = objs
+OBJS = $(addprefix $(O_DIR)/, $(FILES:.c=.o))
+
+HEADER = lem_in.h get_next_line.h
+H_DIR = header
+INC = $(addprefix $(H_DIR)/, $(HEADER))
+INCLUDE = -I $(L_DIR) -I $(V_DIR) -I $(H_DIR) 
+
 L_DIR = libft
 V_DIR = libvector
-FILES = $(F_DIR)/lem_in.c \
-		$(F_DIR)/get.c \
-		$(F_DIR)/set.c \
-		$(F_DIR)/map.c \
-		$(F_DIR)/print.c \
-		$(F_DIR)/read.c \
-		$(F_DIR)/room.c \
-		$(F_DIR)/utility.c \
-		$(F_DIR)/utility2.c \
-		$(F_DIR)/utility3.c \
-		$(F_DIR)/get_next_line.c \
-		$(F_DIR)/error.c \
-		$(F_DIR)/solve.c \
-		$(F_DIR)/params.c
-TMP = Makefile~ $(NAME)~ $(FILES:.c=.c~)
-OBJ = $(FILES:.c=.o)
+LIBFT = $(L_DIR)/libft.a
+LIBVEC = $(V_DIR)/libvector.a
+LIBLINK = -L ./$(V_DIR) -L ./$(L_DIR) -lft -lvector
 
-all : $(NAME)
+all: libft libvector $(LEMIN)
 
-$(NAME) :
-	@cd $(L_DIR) && $(MAKE)
-	@cd $(V_DIR) && $(MAKE)
-	@echo Project : $(NAME)
+$(LEMIN): $(OBJS) $(LIBFT) $(LIBVEC)
+	@echo Project : $(LEMIN)
 	@echo "\t"- Compiler : $(CC)
 	@echo "\t"- Flags : $(FLAGS)
-	@$(CC) -o $(NAME) $(FLAGS) $(FILES) -L $(V_DIR) -L $(L_DIR) -lft -lvector -I $(H_DIR) 
+	@$(CC) $(FLAGS) -o $@ $(OBJS) $(LIBLINK)
 
-clean :
+$(O_DIR)/%.o: $(F_DIR)/%.c $(INC)
+	@mkdir -p $(O_DIR)
+	@$(CC) $(FLAGS) $(INCLUDE) -c -o $@ $<
+	@echo "Creation de "$<" OK"
+
+libft:
+	@make -C $(L_DIR)
+
+libvector:
+	@make -C $(V_DIR)
+
+clean:
 	@echo clean :"\n\tTemporary and binary files deleted"
-	@rm -f $(TMP) $(OBJ)
-	@cd $(L_DIR) && $(MAKE) $@
-	@cd $(V_DIR) && $(MAKE) $@
+	@rm -rf $(O_DIR)
+	@make -C $(V_DIR) clean
+	@make -C $(V_DIR) clean
 
-fclean : clean
-	@echo fclean :"\n\t"$(NAME) deleted
-	@rm -f $(NAME)
-	@cd $(L_DIR) && $(MAKE) $@
-	@cd $(V_DIR) && $(MAKE) $@
+fclean: clean
+	@rm -f $(LEMIN)
+	@rm -f $(LIBFT)
+	@rm -f $(LIBVEC)
+	@echo fclean :"\n\t"$(LEMIN) deleted
+	@echo "\t"$(LIBVEC) "\n" $(LIBFT) deleted
 
-norme :
+norme:
 	@echo "\t\tNORME ERROR\n----------------------------------------------"
 	@norminette > checking
 	@cat checking
 
 re : fclean all
 
-.PHONY : all clean fclean re
+.PHONY : all clean fclean re libft libvector

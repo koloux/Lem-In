@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 16:40:17 by nhuber            #+#    #+#             */
-/*   Updated: 2017/03/01 12:13:04 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/03/01 17:19:53 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int			main(int ac, char **av)
 		{
 			info = anthill->items[0];
 			ft_putendl(info->text);
+			print_path(anthill);
 		}
 		empty(anthill);
 	}
