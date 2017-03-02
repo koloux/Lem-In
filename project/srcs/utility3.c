@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/22 15:50:58 by nhuber            #+#    #+#             */
-/*   Updated: 2017/03/02 18:23:07 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/03/02 19:00:54 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		is_tube(t_vector *anthill, char *tube)
 	{
 		er += is_duplicatename(anthill, tmp[0], (int)ft_strlen(tmp[0]));
 		er += is_duplicatename(anthill, tmp[1], (int)ft_strlen(tmp[1]));
-		er = (er == -2) ? 0 : er;
+		er = (er != -2) ? -1 : 0;
 		if (er >= 0)
 			er += is_duplicatetube(anthill, tmp);
 	}

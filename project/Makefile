@@ -11,7 +11,7 @@
 #* ************************************************************************** *#
 
 CC = gcc
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror
 LEMIN = lem-in
 FILES = lem_in.c set.c map.c print.c read.c room.c error.c solve.c \
 			params.c utility.c utility2.c utility3.c get.c get2.c \
