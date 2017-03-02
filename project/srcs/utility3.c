@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/22 15:50:58 by nhuber            #+#    #+#             */
-/*   Updated: 2017/03/01 18:02:57 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/03/02 15:42:48 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,16 @@ int		is_start_end(t_vector *anthill, int se)
 	return (0);
 }
 
-void	del_str(char **s)
+void	del_str(char **s, int size)
 {
 	int		i;
-	char	*tmp;
 
 	i = 0;
-	while (s[i] != NULL)
+	while (i < size)
 	{
-		tmp = s[i];
-		ft_strdel(&tmp);
+		free(s[i]);
 		i++;
 	}
-	free(s);
+	if (s != NULL)
+		free(s);
 }

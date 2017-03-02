@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 17:30:03 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/17 18:07:44 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/03/02 11:40:59 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ long long	ft_atol(const char *str)
 		sign = -1;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
-	while (ft_isdigit(str[i]))
+	while (str[i] && ft_isdigit(str[i]))
 	{
 		result = result * 10 + (str[i] - '0');
 		i++;

@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/16 13:40:21 by nhuber            #+#    #+#             */
-/*   Updated: 2017/03/01 11:53:58 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/03/02 15:44:27 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	is_coordinate(char *line, int i)
 	long long	nb;
 
 	j = 0;
-	while (i >= 0 && line[i] != ' ')
+	while (i > 0 && line[i] != ' ')
 	{
 		if (ft_isdigit(line[i--] == 1))
 			return (-1);

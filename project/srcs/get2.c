@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 14:44:55 by nhuber            #+#    #+#             */
-/*   Updated: 2017/03/01 17:42:17 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/03/02 15:24:43 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@ char	**get_pathname(t_vector *anthill)
 	int		j;
 
 	j = get_pathlen(anthill);
-	if ((path = (char **)malloc(sizeof(char *) * j)) != NULL)
+	if ((path = (char **)malloc(sizeof(char *) * j + 1)) != NULL)
 	{
 		tmp = anthill->items[get_se_index(anthill, 2)];
 		i = 0;
-		path[j--] = NULL;
+		path[j - 1] = NULL;
+		j--;
 		while (i != get_se_index(anthill, 1))
 		{
 			i = tmp->prev;

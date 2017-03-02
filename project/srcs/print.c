@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 09:53:03 by nhuber            #+#    #+#             */
-/*   Updated: 2017/03/02 10:06:01 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/03/02 15:31:52 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void		print_path(t_vector *anthill)
 		i++;
 	}
 	print_move_bot(anthill, i, j, path);
-	del_str(path);
+	del_str(path, max);
 }
 
 void		print_usage(int error)

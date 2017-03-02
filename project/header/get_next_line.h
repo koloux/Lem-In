@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 11:06:10 by nhuber            #+#    #+#             */
-/*   Updated: 2017/02/18 10:07:00 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/03/02 12:25:30 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@ typedef struct		s_llst
 {
 	void			*content;
 	size_t			content_size;
-	struct s_llst	*next;
 	int				fd;
+	struct s_llst	*next;
 }					t_gnl;
 
 int					get_next_line(int const fd, char **line);
 int					gnl_build(int fd, char *buf, t_gnl **head);
 t_gnl				*gnl_search(int fd, t_gnl **head);
 char				*gnl_trim(int fd, t_gnl **head);
+t_gnl				*gnl_lstnew(void const *content, size_t content_size);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 17:00:19 by nhuber            #+#    #+#             */
-/*   Updated: 2017/03/01 18:36:54 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/03/02 12:26:26 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int		gnl_build(int fd, char *buf, t_gnl **head)
 	elem = gnl_search(fd, head);
 	if (elem == NULL)
 	{
-		if (!(elem = (t_gnl *)ft_lstnew((void *)buf, (ft_strlen(buf) + 1))))
+		if (!(elem = (t_gnl *)gnl_lstnew((void *)buf, (ft_strlen(buf) + 1))))
 			return (-1);
 		elem->fd = fd;
 		ft_lstaddback((t_list **)head, (t_list *)elem);
@@ -100,4 +100,30 @@ int		gnl_build(int fd, char *buf, t_gnl **head)
 	if (ft_strstr((char *)elem->content, "\n") != NULL)
 		return (1);
 	return (0);
+}
+
+t_gnl	*gnl_lstnew(void const *content, size_t content_size)
+{
+	t_gnl	*elem;
+	void	*cpy;
+
+	if ((elem = (t_gnl *)malloc(sizeof(t_gnl))) == NULL)
+		return (NULL);
+	elem->next = NULL;
+	if (!content)
+	{
+		elem->content = NULL;
+		elem->content_size = 0;
+	}
+	else
+	{
+		if (!(cpy = malloc(content_size)))
+		{
+			free(elem);
+			return (NULL);
+		}
+		elem->content = ft_memcpy(cpy, content, content_size);
+		elem->content_size = content_size;
+	}
+	return (elem);
 }
