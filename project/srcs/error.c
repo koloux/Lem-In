@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 09:31:23 by nhuber            #+#    #+#             */
-/*   Updated: 2017/03/02 17:01:28 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/03/02 18:28:45 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	error(t_vector *anthill)
 		er = 1;
 	else if (anthill->size <= 2)
 		er = 2;
+	else if (((t_node *)anthill->items[1])->tubes == NULL)
+		er = 3;
 	else if (is_duplicatecmd(anthill) != 2)
 		er = 4;
 	print_usage(er);
