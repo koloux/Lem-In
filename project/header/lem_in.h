@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 16:48:24 by nhuber            #+#    #+#             */
-/*   Updated: 2017/03/02 15:30:30 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/03/02 16:35:57 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int				params(t_vector *anthill);
 int				params_cmd(int fd, char *line, t_vector *anthill);
 int				params_ant(char *buff, t_vector *anthill);
 int				params_room(char *buff, t_vector *anthill);
-int				params_tube(char *tube, t_vector *anthill, int er);
+int				params_tube(char *tube, t_vector *anthill);
 void			print_usage(int error);
 void			print_path(t_vector *anthill);
 int				read_file(t_vector *anthill, int fd);

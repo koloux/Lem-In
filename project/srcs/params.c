@@ -6,23 +6,28 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 09:21:17 by nhuber            #+#    #+#             */
-/*   Updated: 2017/03/02 11:58:13 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/03/02 17:14:46 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int	params_tube(char *tube, t_vector *anthill, int er)
+int	params_tube(char *tube, t_vector *anthill)
 {
 	int	i;
 
 	i = 0;
-	if (er == 1)
-		room_tubes(anthill);
-	if (is_tube(anthill, tube) == 0)
+	if (anthill->size > 2)
 	{
-		map_text(anthill, tube);
-		room_link(anthill, tube);
+		if (((t_node *)anthill->items[1])->tubes == NULL)
+			room_tubes(anthill);
+		if (is_tube(anthill, tube) == 0)
+		{
+			map_text(anthill, tube);
+			room_link(anthill, tube);
+		}
+		else
+			i = -1;
 	}
 	else
 		i = -1;

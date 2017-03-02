@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 17:00:19 by nhuber            #+#    #+#             */
-/*   Updated: 2017/03/02 12:26:26 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/03/02 16:56:39 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*gnl_trim(int fd, t_gnl **head)
 	char	*cpy;
 
 	elem = gnl_search(fd, head);
-	if (elem->content == NULL)
+	if (elem == NULL || elem->content == NULL)
 		return (NULL);
 	if ((end = ft_strstr((char *)elem->content, "\n")) != NULL)
 	{
