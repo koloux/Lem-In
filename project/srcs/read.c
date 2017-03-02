@@ -6,7 +6,7 @@
 /*   By: nhuber <nhuber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 10:48:02 by nhuber            #+#    #+#             */
-/*   Updated: 2017/03/01 23:15:06 by nhuber           ###   ########.fr       */
+/*   Updated: 2017/03/02 10:03:37 by nhuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	read_file(t_vector *anthill, int fd)
 			er = -1;
 		free(buff);
 	}
-	free(buff);
+	if (antnb > 0)
+		free(buff);
 	return (er);
 }

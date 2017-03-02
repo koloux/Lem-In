@@ -45,7 +45,7 @@ $(LEMIN): $(OBJS) $(LIBFT) $(LIBVEC)
 $(O_DIR)/%.o: $(F_DIR)/%.c $(INC)
 	@mkdir -p $(O_DIR)
 	@$(CC) $(FLAGS) $(INCLUDE) -c -o $@ $<
-	@echo "Creation de "$<" OK"
+	@echo "Creation de "$@" OK"
 
 libft:
 	@make -C $(L_DIR)
